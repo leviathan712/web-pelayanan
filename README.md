@@ -15,3 +15,8 @@
 - Buka 2 terminal di vs code
 - Terminal pertama jalanin `php artisan serve`
 - Terminal kedua jalanin `npm run dev`
+- Buka `http://localhost:8000/` di browser
+
+## Credential Login
+- email: admin@mail.com
+- password: 123123123
