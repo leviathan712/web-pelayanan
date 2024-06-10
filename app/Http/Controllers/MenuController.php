@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ApplicationSetting;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
     public function home()
     {
-        return view('page.home');
+        $data = [
+            'status_online' => ApplicationSetting::where('slug', 'service-status')->first(),
+        ];
+        return view('page.home', $data);
     }
 
     public function skck()

@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Dashboard Pelayanan 09',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,11 +63,12 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo' => '<b>Pelayanan</b>09',
+    'logo_img' => 'vendor/adminlte/dist/img/Coat_of_arms_of_Jakarta.svg.png',
+    'logo_img_class' => 'brand-image',
+    'logo_url' => 'dashboard',
     'logo_img_xl' => null,
-    'logo_img_xl_class' => 'brand-image-xs',
+    'logo_img_xl_class' => 'brand-image-s',
     'logo_img_alt' => 'Admin Logo',
 
     /*
@@ -86,7 +87,7 @@ return [
     'auth_logo' => [
         'enabled' => false,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+            'path' => 'vendor/adminlte/dist/img/Coat_of_arms_of_Jakarta.svg.png',
             'alt' => 'Auth Logo',
             'class' => '',
             'width' => 50,
@@ -113,7 +114,7 @@ return [
         'enabled' => true,
         'mode' => 'fullscreen',
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+            'path' => 'vendor/adminlte/dist/img/Coat_of_arms_of_Jakarta.svg.png',
             'alt' => 'AdminLTE Preloader Image',
             'effect' => 'animation__shake',
             'width' => 60,
@@ -257,7 +258,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'dashboard',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -319,13 +320,13 @@ return [
         [
             'text' => 'Dashboard',
             'url' => '/dashboard',
-            'icon' => 'fas fa-fw fa-house',
+            'icon' => 'fas fa-fw fa-home',
             // 'label' => 4,
             // 'label_color' => 'success',
         ],
         [
             'text' => 'Pengajuan Surat',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-file-alt',
             'submenu' => [
                 [
                     'text' => 'SKCK',
@@ -340,13 +341,32 @@ return [
         [
             'text' => 'Lapor RW',
             'url' => '/dashboard/page-lapor',
-            'icon' => 'fas fa-fw fa-house',
+            'icon' => 'fas fa-fw fa-bullhorn',
             // 'label' => 4,
             // 'label_color' => 'success',
 
         ],
 
-        ['header' => 'account_settings'],
+        [
+            'text' => 'Kontak RT',
+            'url' => '/dashboard/page-lapor',
+            'icon' => 'fas fa-fw fa-address-book',
+            // 'label' => 4,
+            // 'label_color' => 'success',
+
+        ],
+
+        [
+            'text' => 'Laporan Keuangan',
+            'url' => '/dashboard/page-lapor',
+            'icon' => 'fas fa-fw fa-chart-line',
+            // 'label' => 4,
+            // 'label_color' => 'success',
+
+        ],
+
+
+        ['header' => 'Application Settings'],
         [
             'text' => 'User',
             'icon' => 'fas fa-fw fa-user',
@@ -362,9 +382,9 @@ return [
             ]
         ],
         [
-            'text' => 'profile',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'Settings',
+            'url' => '/dashboard/settings',
+            'icon' => 'fas fa-fw fa-cog',
         ],
         [
             'text' => 'change_password',

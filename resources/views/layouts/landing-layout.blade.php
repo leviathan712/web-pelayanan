@@ -76,6 +76,7 @@
 
         <main class="py-4">
             {{-- @yield('content') --}}
+            {{-- NIH KOH BUAT DISINI YA KONTENTNYA SAMA NAVBAR --}}
             HOME
         </main>
     </div>

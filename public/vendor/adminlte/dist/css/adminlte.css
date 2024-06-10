@@ -11614,6 +11614,8 @@ body:not(.layout-fixed).layout-navbar-fixed.text-sm .wrapper .main-sidebar .side
   }
 }
 
+
+
 .layout-top-nav .wrapper {
   margin-left: 0;
 }
@@ -12507,12 +12509,12 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 
 .brand-link .brand-image {
   float: left;
-  line-height: .8;
-  margin-left: .8rem;
-  margin-right: .5rem;
-  margin-top: -3px;
-  max-height: 33px;
-  width: auto;
+    line-height: 32.8;
+    margin-left: .8rem;
+    margin-right: 5px;
+    margin-top: -3px;
+    max-height: 46px;
+    width: 60px;
 }
 
 .brand-link .brand-image-xs {

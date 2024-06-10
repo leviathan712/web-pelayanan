@@ -14,6 +14,12 @@
     {{-- Add here extra stylesheets --}}
     {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
     @yield('page-css')
+    <style>
+        .brand-image {
+            width: 40px !important;
+            height: auto !important;
+        }
+    </style>
 @stop
 
 @section('js')

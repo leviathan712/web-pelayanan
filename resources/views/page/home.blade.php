@@ -4,8 +4,19 @@
     <div class="row justify-content-center mt-3">
         <div class="col-md-12">
             <div class="card border-0 shadow-lg">
-                <div class="card-header bg-primary text-white text-center">
-                    <h2 style="font-family: 'Poppins', sans-serif;">Selamat Datang di Dashboard Pelayanan RW. 09</h2>
+                <div
+                    class="card-header bg-primary text-white text-center position-relative d-flex align-items-center justify-content-center">
+                    <h2 style="font-family: 'Poppins', sans-serif; flex-grow: 1;">Selamat Datang di Dashboard Pelayanan RW. 09</h2>
+                    <div id="status" class="status-card d-flex align-items-center justify-content-center">
+                        <span class="status-indicator {{ $status_online->value == 1 ? 'online' : 'offline' }}" id="status-indicator"></span>
+                        <span class="status-text" id="status-text">
+                            @if ($status_online->value == 1)
+                                Online
+                            @else
+                                Offline
+                            @endif
+                        </span>
+                    </div>
                 </div>
 
                 <div class="card-body">
@@ -42,11 +53,11 @@
                         <div class="col-md-3">
                             <div class="card bg-gradient-warning text-white mb-3">
                                 <div class="card-body">
-                                    <h5 class="card-title">Kegiatan Mendatang</h5>
-                                    <p class="card-text">Kegiatan Terjadwal</p>
+                                    <h5 class="card-title">Kontak RT</h5>
+                                    <p class="card-text">Kontak RT 01-010</p>
                                 </div>
                                 <div class="card-footer">
-                                    <small class="text-white">Lihat jadwal kegiatan RW.</small>
+                                    <small class="text-white">Lihat Kontak RT.</small>
                                 </div>
                             </div>
                         </div>
@@ -66,18 +77,18 @@
                     <div class="row mt-4 mb-3">
                         <!-- Quick Links -->
                         <div class="col-md-3">
-                            <a href="#" class="btn btn-primary btn-block">
+                            <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#pengajuanModal">
                                 <i class="fas fa-file-alt"></i> Pengajuan Surat
                             </a>
                         </div>
                         <div class="col-md-3">
-                            <a href="#" class="btn btn-success btn-block">
+                            <a href="{{ route('lapor') }}" class="btn btn-success btn-block">
                                 <i class="fas fa-bullhorn"></i> Pengaduan Warga
                             </a>
                         </div>
                         <div class="col-md-3">
                             <a href="#" class="btn text-white btn-block" style="background-color: gold">
-                                <i class="fas fa-calendar-alt"></i> Jadwal Kegiatan
+                                <i class="fas fa-address-book"></i> Kontak RT
                             </a>
                         </div>
                         <div class="col-md-3">
@@ -88,50 +99,39 @@
                     </div>
 
                     <div class="row mt-4 mb-3">
+                        <!-- Table for SKTM and SKCK Status -->
                         <div class="col-12">
-                            <div class="card direct-chat direct-chat-primary"
-                                style="background: linear-gradient(120deg, #2980b9, #6dd5fa); border-radius: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                                <div class="card-header ui-sortable-handle"
-                                    style="background-color: transparent; border-bottom: none;">
-                                    <h3 class="card-title" style="color: #fff;">Forum Komunikasi Warga</h3>
-                                    <div class="card-tools">
-                                        <span class="badge badge-light" style="color: #2980b9;">3 New Messages</span>
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"
-                                            style="color: #fff;">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-tool" title="Contacts"
-                                            data-widget="chat-pane-toggle" style="color: #fff;">
-                                            <i class="fas fa-comments"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-tool" data-card-widget="remove"
-                                            style="color: #fff;">
-                                            <i class="fas fa-times"></i>
-                                        </button>
-                                    </div>
+                            <div class="card" style="border-radius: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                                <div class="card-header" style="background-color: #2980b9; color: white; border-bottom: none; border-radius: 20px 20px 0 0;">
+                                    <h3 class="card-title" style="color: #fff;">Status Pengajuan Surat</h3>
                                 </div>
-                                <div class="card-body" style="background-color: rgba(255, 255, 255, 0.8); border-radius: 20px;">
-                                    <div class="direct-chat-messages" style="padding: 10px;">
-                                        <!-- Your chat messages -->
-                                    </div>
-                                    <div class="direct-chat-contacts" style="padding: 10px;">
-                                        <!-- Contacts -->
-                                    </div>
-                                </div>
-                                <div class="card-footer" style="background-color: transparent;">
-                                    <form action="#" method="post">
-                                        <div class="input-group" style="border: none; border-radius: 20px;">
-                                            <input type="text" name="message" placeholder="Type Message ..."
-                                                class="form-control"
-                                                style=" border: none; border-radius: 20px; background-color: rgba(255, 255, 255, 0.9);">
-                                            <span class="input-group-append">
-                                                <button type="button" class="btn btn-light rounded-circle"
-                                                    style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-                                                    <i class="fas fa-paper-plane" style="color: #2980b9;"></i>
-                                                </button>
-                                            </span>
-                                        </div>
-                                    </form>
+                                <div class="card-body" style="background-color: rgba(255, 255, 255, 0.8); border-radius: 0 0 20px 20px;">
+                                    <table class="table table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Jenis Surat</th>
+                                                <th>Nama Pengaju</th>
+                                                <th>Tanggal Pengajuan</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        {{-- <tbody>
+                                            @foreach ($pengajuanSurat as $index => $pengajuan)
+                                                <tr>
+                                                    <td>{{ $index + 1 }}</td>
+                                                    <td>{{ $pengajuan->jenis_surat }}</td>
+                                                    <td>{{ $pengajuan->nama_pengaju }}</td>
+                                                    <td>{{ $pengajuan->tanggal_pengajuan }}</td>
+                                                    <td>
+                                                        <span class="badge badge-{{ $pengajuan->status == 'Diterima' ? 'success' : ($pengajuan->status == 'Ditolak' ? 'danger' : 'warning') }}">
+                                                            {{ $pengajuan->status }}
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody> --}}
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -139,23 +139,25 @@
 
                     <div class="row mt-4 mb-3">
                         <!-- Charts -->
-                        <div class="col-lg-4 col-md-12">
-                            <div class="card h-100">
-                                <div class="card-header">Statistik Pengajuan Surat</div>
-                                <div class="card-body">
-                                    <canvas style="margin-top: 50px" id="pengajuanChart" width="400" height="200"></canvas>
+                        @if (auth()->user()->type == 'admin')
+                            <div class="col-lg-4 col-md-12">
+                                <div class="card h-100">
+                                    <div class="card-header">Statistik Pengajuan Surat</div>
+                                    <div class="card-body">
+                                        <canvas style="margin-top: 50px" id="pengajuanChart" width="400" height="200"></canvas>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12">
-                            <div class="card h-100">
-                                <div class="card-header">Statistik Pengaduan Warga</div>
-                                <div class="card-body">
-                                    <canvas id="pengaduanChart" style="margin-top: 50px"></canvas>
+                            <div class="col-lg-4 col-md-12">
+                                <div class="card h-100">
+                                    <div class="card-header">Statistik Pengaduan Warga</div>
+                                    <div class="card-body">
+                                        <canvas id="pengaduanChart" style="margin-top: 50px"></canvas>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12">
+                        @endif
+                        <div class="col-lg-{{ auth()->user()->type == 'admin' ? '4' : '6 text-center' }} col-md-12">
                             <div class="card h-100">
                                 <div class="card-header border-0 ui-sortable-handle">
                                     <h3 class="card-title">
@@ -166,8 +168,7 @@
                                     <div class="card-tools">
                                         <!-- button with a dropdown -->
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-success btn-sm dropdown-toggle"
-                                                data-toggle="dropdown" data-offset="-52">
+                                            <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
                                                 <i class="fas fa-bars"></i>
                                             </button>
                                             <div class="dropdown-menu" role="menu">
@@ -195,6 +196,7 @@
                             </div>
                         </div>
                     </div>
+                    
 
                     <div class="row mt-4">
                         <div class="col-md-12 text-center">
@@ -205,7 +207,34 @@
             </div>
         </div>
     </div>
+    
+
+    <!-- Modal for Pengajuan Surat -->
+    <div class="modal fade" id="pengajuanModal" tabindex="-1" role="dialog" aria-labelledby="pengajuanModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="pengajuanModalLabel">Layanan Pengajuan Surat</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action">SKCK</a>
+                        <a href="#" class="list-group-item list-group-item-action">SKTM</a>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
+
+
+
 @section('page-js')
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -283,5 +312,27 @@
         });
     </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.0/main.min.js"></script>
+    <style>
+        .status-indicator {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+
+        .online {
+            background-color: green;
+        }
+
+        .offline {
+            background-color: red;
+        }
+
+        .status-text {
+            display: inline-block;
+            vertical-align: middle;
+            color: white;
+        }
+    </style>
 @endsection
