@@ -9,6 +9,10 @@ Route::get('/', function () {
     return view('layouts.landing-layout');
 });
 
+Route::get('/struktur-organisasi', function () {
+    return view('layouts.struktur_organisasi');
+});
+
 Route::group(['middleware' => ['auth']], function () {
     
     // Route untuk halaman utama
@@ -28,4 +32,3 @@ Route::group(['middleware' => ['auth']], function () {
     });
 });
 
-Auth::routes();
